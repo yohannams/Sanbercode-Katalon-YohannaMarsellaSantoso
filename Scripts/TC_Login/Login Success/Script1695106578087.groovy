@@ -31,16 +31,13 @@ WebUI.setText(findTestObject('Object Repository/Login/input_username'), username
 WebUI.setText(findTestObject('Object Repository/Login/input_password'), passwordLogin)
 
 WebUI.click(findTestObject('Object Repository/Login/btn_login'))
+WebUI.delay(2)
 
 // Cek apakah tombol "Log in" tampil atau tidak
 if (WebUI.verifyElementPresent(findTestObject('Object Repository/Login/btn_login'), 5, FailureHandling.OPTIONAL)) {
-    
-    WebElement linkElement = WebUI.findTestObject('Object Repository/Login/lbl_welcome-username').toWebElement()
-
-    // Dapatkan teks dari elemen <a>
-    String linkText = linkElement.getAttribute('innerText')
-
-    WebUI.verifyMatch(linkText, 'Welcome'+usernameLogin, false)
+	String anchorText = WebUI.getText(findTestObject('Object Repository/Login/lbl_welcome-username'))
+	println(anchorText)
+	WebUI.verifyMatch(anchorText, 'Welcome ' + usernameLogin, true)
 } else {
     WebUI.comment('Tombol "Log in" tidak tampil.')
 }

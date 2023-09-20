@@ -41,6 +41,5 @@ WebUI.verifyMatch(alertText, expectedText, false)
 
 WebUI.acceptAlert()
 
-//WebUI.verifyElementText(findTestObject('Object Repository/Login/lbl_welcome-username'), 'Welcome yohannams')
 WebUI.closeBrowser()
 
